@@ -8,7 +8,6 @@ import {
   getAllContacts,
   getFilteredContacts,
 } from 'redux/phonebook/phonebook-selectors';
-import { getFilter } from 'redux/filter/filter-selectors';
 
 import styles from './phonebook.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
