@@ -17,10 +17,8 @@ const ContactsForm = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const result = onSubmit({ ...contact });
-    if (result) {
-      setContact({ ...initialState });
-    }
+    onSubmit({ ...contact });
+    setContact({ ...initialState });
   };
 
   const { name, number } = contact;
