@@ -18,10 +18,9 @@ import { setFilter } from 'redux/filter/filter-actions';
 
 const Phonebook = () => {
   const filteredContacts = useSelector(getFilteredContacts);
-  const allContacts = useSelector(getAllContacts);
+  const contacts = useSelector(getAllContacts);
   // const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-
   // const [contacts, setContacts] = useState(() => {
   //   const contacts = JSON.parse(localStorage.getItem('my-contacts'));
   //   return contacts ? contacts : [];
@@ -35,7 +34,7 @@ const Phonebook = () => {
   const isDulicate = (name, number) => {
     const normalizedName = name.toLowerCase();
     const normalizedNumber = number.toLowerCase();
-    const result = allContacts.find(({ name, number }) => {
+    const result = contacts.find(({ name, number }) => {
       return (
         name.toLowerCase() === normalizedName ||
         number.toLowerCase() === normalizedNumber

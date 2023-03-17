@@ -5,7 +5,8 @@ import ContactsListItem from './ContactsListItem/ContactsListItem';
 import styles from './contactList.module.scss';
 
 const ContactsList = ({ contacts, deleteContact }) => {
-  const contactsSorted = contacts;
+  // const contactsSorted = contacts;
+  // console.log(contacts)
   // .sort(function (a, b) {
   //   if (a.name.toLowerCase() > b.name.toLowerCase()) {
   //     return 1;
@@ -16,7 +17,7 @@ const ContactsList = ({ contacts, deleteContact }) => {
   //   return 0;
   // });
 
-  const elements = contactsSorted.map(({ id, name, number }) => {
+  const elements = contacts.map(({ id, name, number }) => {
     return (
       <ContactsListItem
         key={id}

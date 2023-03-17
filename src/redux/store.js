@@ -5,7 +5,8 @@ import { persistStore,
   PAUSE,
   PERSIST,
   PURGE,
-  REGISTER, } from 'redux-persist';
+  REGISTER, 
+} from 'redux-persist';
 
 import rootReducer from './root-reducer';
 
