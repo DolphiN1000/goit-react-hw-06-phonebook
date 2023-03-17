@@ -8,7 +8,7 @@ import {
   getAllContacts,
   getFilteredContacts,
 } from 'redux/phonebook/phonebook-selectors';
-import { getFilter } from 'redux/filter/filter-selectors';
+// import { getFilter } from 'redux/filter/filter-selectors';
 
 import styles from './phonebook.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,7 +19,7 @@ import { setFilter } from 'redux/filter/filter-actions';
 const Phonebook = () => {
   const filteredContacts = useSelector(getFilteredContacts);
   const allContacts = useSelector(getAllContacts);
-  const filter = useSelector(getFilter);
+  // const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
   // const [contacts, setContacts] = useState(() => {

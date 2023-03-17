@@ -3,7 +3,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 
 import storage from 'redux-persist/lib/storage';
 
-import contactsReducer from './phonebook/phonbook-reducer';
+import contactsReducer from './phonebook/phonebook-reducer';
 import filterReducer from './filter/filter-reducer';
 
 const rootReducer = combineReducers({
