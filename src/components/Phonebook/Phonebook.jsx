@@ -30,25 +30,7 @@ const Phonebook = () => {
   //   localStorage.setItem('my-contacts', JSON.stringify(contacts));
   // }, [contacts]);
 
-  const isDulicate = (name, number) => {
-    const normalizedName = name.toLowerCase();
-    const normalizedNumber = number.toLowerCase();
-    const result = contacts.find(({ name, number }) => {
-      return (
-        name.toLowerCase() === normalizedName ||
-        number.toLowerCase() === normalizedNumber
-      );
-    });
-    return Boolean(result);
-  };
-
-  const handleaddContact = ({ name, number }) => {
-    if (isDulicate(name, number)) {
-      alert(`${name}: ${number} is in phonebook`);
-      return false;
-    }
-    dispatch(addContact({ name, number }));
-  };
+  
 
   const handleDeleteContact = id => {
     dispatch(deleteContact(id));
@@ -64,7 +46,7 @@ const Phonebook = () => {
     <div className={styles.container}>
       <h1>Phonebook</h1>
 
-      <ContactsForm onSubmit={handleaddContact} />
+      <ContactsForm />
       <h2>Contacts</h2>
       <Filter handleChange={handleFilter} />
       {isContacts && (

@@ -4,9 +4,15 @@ import PropTypes from 'prop-types';
 import initialState from './initialState';
 
 import styles from './contactForm.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/phonebook/phonebook-slice';
+import { getAllContacts } from 'redux/phonebook/phonebook-selectors';
 
-const ContactsForm = ({ onSubmit }) => {
+
+const ContactsForm = () => {
   const [contact, setContact] = useState({ ...initialState });
+  const dispatch = useDispatch();
+  const contacts = useSelector(getAllContacts);
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -17,8 +23,28 @@ const ContactsForm = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit({ ...contact });
+    handleaddContact({ ...contact });
     setContact({ ...initialState });
+  };
+
+  const handleaddContact = ({ name, number }) => {
+    if (isDulicate(name, number)) {
+      alert(`${name}: ${number} is in phonebook`);
+      return false;
+    }
+    dispatch(addContact({ name, number }));
+  };
+
+  const isDulicate = (name, number) => {
+    const normalizedName = name.toLowerCase();
+    const normalizedNumber = number.toLowerCase();
+    const result = contacts.find(({ name, number }) => {
+      return (
+        name.toLowerCase() === normalizedName ||
+        number.toLowerCase() === normalizedNumber
+      );
+    });
+    return Boolean(result);
   };
 
   const { name, number } = contact;
