@@ -2,11 +2,13 @@ import PropTypes from 'prop-types';
 
 import ContactsListItem from './ContactsListItem/ContactsListItem';
 
+import { getFilteredContacts } from 'redux/phonebook/phonebook-selectors';
 import styles from './contactList.module.scss';
+import { useSelector } from 'react-redux';
 
-const ContactsList = ({ contacts, deleteContact }) => {
-  // const contactsSorted = contacts;
-  // console.log(contacts)
+const ContactsList = () => {
+  const filteredContacts = useSelector(getFilteredContacts);
+  const contactsSorted = filteredContacts;
   // .sort(function (a, b) {
   //   if (a.name.toLowerCase() > b.name.toLowerCase()) {
   //     return 1;
@@ -17,16 +19,8 @@ const ContactsList = ({ contacts, deleteContact }) => {
   //   return 0;
   // });
 
-  const elements = contacts.map(({ id, name, number }) => {
-    return (
-      <ContactsListItem
-        key={id}
-        id={id}
-        name={name}
-        number={number}
-        deleteContact={deleteContact}
-      />
-    );
+  const elements = contactsSorted.map(({ id, name, number }) => {
+    return <ContactsListItem key={id} id={id} name={name} number={number} />;
   });
 
   return <ol className={styles.list}>{elements}</ol>;
@@ -46,5 +40,4 @@ ContactsList.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  deleteContact: PropTypes.func.isRequired,
 };

@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/phonebook/phonebook-slice';
 import { getAllContacts } from 'redux/phonebook/phonebook-selectors';
 
-
 const ContactsForm = () => {
   const [contact, setContact] = useState({ ...initialState });
   const dispatch = useDispatch();
